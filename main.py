@@ -11,24 +11,11 @@ st.set_page_config(
     initial_sidebar_state='auto'
 )
 
-from textblob import TextBlob
 
 from utils import img_to_bytes, read_markdown_file, gantt_chart, language_chart, coding_language_chart
 
-# import resume content
 from contact_info import socia_media_links
 from resume import coding, courses
-# from content.resume import history, languages, courses, coding
-
-# import project content
-# from content.this_website_pm.project_wikihow_wireframes import wireframes
-
-# project_wikihow_engineering = read_markdown_file('content/this_website_pm/project_wikihow_engineering.md')
-# project_wikihow_backlog = read_markdown_file('content/this_website_pm/backlog.html')
-project_wikihow_prd = read_markdown_file('html/projectTable.html')
-# project_wikihow_design = read_markdown_file('content/this_website_pm/project_wikihow_design.md')
-# project_music_recommender = read_markdown_file('content/music_recommender/project_music_recommender.md')
-# project_music_recommender_info = read_markdown_file('content/music_recommender/project_music_recommender_info.md')
 
 # Sidebar
 st.sidebar.markdown("# Navigation")
@@ -120,20 +107,6 @@ elif page == 'Resume':
         <br/>
         </div></div>
         '''
-    # history_df = history()
-    # st.write(experience_subtitle, unsafe_allow_html=True)
-    #
-    # gantt = gantt_chart(history_df.query("org != 'Key moments'"))
-    # scatter = alt.Chart(history_df.query("org == 'Key moments'")).mark_circle().encode(
-    #     x=alt.X('start:T', axis=alt.Axis(title='', orient='top', format='%b %Y')),
-    #     y=alt.Y('org:N', sort=None, axis=alt.Axis(title='')),
-    #     tooltip=['location', 'description'],
-    #     color=alt.Color('color', scale=None)
-    # ).interactive()
-    # resume_chart = alt.layer(gantt, scatter).configure_view(strokeWidth=0.5).properties(width=660)
-    # st.altair_chart(resume_chart, use_container_width=True)
-    #
-    # st.write('---')
 
     # Skills section
     skills_subtitle = '''
@@ -157,16 +130,6 @@ elif page == 'Resume':
         '''
     st.write(courses_subtitle, unsafe_allow_html=True)
 
-    # courses_df = courses()
-    # courses_columns = ['Course', 'Organization', 'Status']
-    # chosen_topic = st.multiselect('Topic',  list(courses_df.Topic.unique()), list(courses_df.Topic.unique()))
-    # if not chosen_topic:
-    #     st.write('')
-    # else:
-    #     table = st.empty()
-    #     add_columns = st.multiselect('Additional information', ['Certificate', 'Platform', 'Date', 'Topic'])
-    #     courses_columns = courses_columns + add_columns
-    #     table.dataframe(courses_df.loc[courses_df.Topic.isin(chosen_topic), courses_columns])
 
 elif page == 'Chatbot':
     st.write('Need to complete')

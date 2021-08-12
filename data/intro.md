@@ -1,7 +1,7 @@
 <div style="text-align: center; font-size: 120%" >
 <div style="display: inline-block; max-width: 120%"> 
     <br/>
-    Hi, my name is <strong>Tom Dugma</strong>. I will soon graduate from the Department of Software and Information Systems Engineering at Ben-Gurion University. 
+    <strong>Tom Dugma</strong>. B.Sc. from the Department of Software and Information Systems Engineering at Ben-Gurion University. 
     <br/><br/>
     In my studies I have experience with Python, JavaScript, Java, C#, C++, C, SQL, Nodejs and more.
     <br/><br/>

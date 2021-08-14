@@ -44,7 +44,7 @@ if page == 'Home':
     avatar = "<img src='data:image/png;base64,{}' class='img-fluid rounded-circle mx-auto d-block' style='max-width:25%'>".format(
         img_to_bytes("media/avatar.png")
     )
-    st.markdown(avatar, unsafe_allow_html=True)
+    st.markdown(avatar, unsafe_allow_html=True,)
     st.write(read_markdown_file("data/intro.md"), unsafe_allow_html=True)
 
     components.html(socia_media_links)
@@ -87,10 +87,13 @@ elif page == 'Projects':
 
     if st.checkbox('Other projects by me'):
 
-        st.write('''
-        Need to complete
-            ''')
+        st.write('## **Twitter Tracker**')
+        st.write(read_markdown_file("data/twitterTracker.md"), unsafe_allow_html=True)
 
+        words = "<img src='data:image/png;base64,{}' class='img-fluid rounded-circle mx-auto d-block' style='max-width:80%'>".format(
+            img_to_bytes("media/MostCommonWords.png")
+        )
+        st.markdown(words, unsafe_allow_html=True)
 
 elif page == 'Resume':
 

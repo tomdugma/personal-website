@@ -2,15 +2,16 @@ import streamlit as st
 import streamlit.components.v1 as components
 import altair as alt
 import pandas as pd
+from PIL import Image
 
 # Header
+
 st.set_page_config(
     page_title='Tom Dugma | personal website',
     page_icon='media/avatar.png',
     layout='centered',
     initial_sidebar_state='auto'
 )
-
 
 from utils import img_to_bytes, read_markdown_file, gantt_chart, language_chart, coding_language_chart
 
@@ -20,7 +21,7 @@ from resume import coding, courses
 # Sidebar
 st.sidebar.markdown("# Navigation")
 navigation_options = ['Home', 'Projects', 'Resume']
-page = st.sidebar.radio(label = '', options = navigation_options, key='0')
+page = st.sidebar.radio(label='', options=navigation_options, key='0')
 st.sidebar.markdown('---')
 
 # Main
@@ -39,12 +40,35 @@ if page == 'Home':
     if st.sidebar.button('A few words from me :) '):
         st.sidebar.audio('media/sound-presenting.m4a')
 
-    # Main page
-
-    avatar = "<img src='data:image/png;base64,{}' class='img-fluid rounded-circle mx-auto d-block' style='max-width:25%'>".format(
-        img_to_bytes("media/avatar.png")
+    st.write(
+        """
+        <div style = "text-align: center">
+            <div style = "display: inline-block; max-width: 80%">
+            <h1>Tom Dugma - Personal Website</h1><br/>
+        </div></div >
+        """,
+        unsafe_allow_html=True
     )
-    st.markdown(avatar, unsafe_allow_html=True,)
+    # Main page
+    with open("style.css") as f:
+        st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
+
+    # avatar = "<img src='data:image/png;base64,{}' class='img-fluid rounded-circle mx-auto d-block' " \
+    #          "style='max-width:25%'>".format(
+    #     img_to_bytes("media/avatar.png")
+    # )
+    col1, col2, col3 = st.beta_columns([1.2, 6, 1])
+    with col1:
+        st.write("")
+
+    with col2:
+        st.image("media/avatar_adobespark.png")
+
+    with col3:
+        st.write("")
+    # image = Image.open('media/avatar_adobespark.png')
+    # st.image(image,width=None)
+    # st.markdown(avatar, unsafe_allow_html=True)
     st.write(read_markdown_file("data/intro.md"), unsafe_allow_html=True)
 
     components.html(socia_media_links)
@@ -63,7 +87,6 @@ elif page == 'Projects':
                     """)
         st.sidebar.markdown(socia_media_links, unsafe_allow_html=True)
 
-    # Main page
     st.write(
         """
         <div style = "text-align: left">
@@ -75,18 +98,15 @@ elif page == 'Projects':
     )
 
     if st.checkbox('How I built this website'):
-
         st.write('**Website Development**')
-        st.markdown(read_markdown_file("data/siteDetails.md"),unsafe_allow_html=True)
+        st.markdown(read_markdown_file("data/siteDetails.md"), unsafe_allow_html=True)
         st.write('')
         st.write('')
         st.subheader('Below: how much lines of code per language')
         st.image('media/CodeCount.png')
         st.write('---')
 
-
     if st.checkbox('Other projects by me'):
-
         st.write('## **Twitter Tracker**')
         st.write(read_markdown_file("data/twitterTracker.md"), unsafe_allow_html=True)
 
